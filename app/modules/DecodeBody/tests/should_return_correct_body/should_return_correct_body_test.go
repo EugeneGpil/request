@@ -27,11 +27,9 @@ func Test_should_return_correct_body(t *testing.T) {
 		},
 	})
 
-	request := requestPackage.New(&httpRequest)
-
 	var bodyVar body
 
-	err := request.DecodeBody(&bodyVar)
+	err := requestPackage.New(&httpRequest).DecodeBody(&bodyVar)
 
 	tester.AssertNil(err)
 	tester.AssertSame(bodyVar.Test, testValue)

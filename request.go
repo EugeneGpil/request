@@ -15,7 +15,7 @@ func New(request *http.Request) Request {
 	}
 }
 
-func (request *Request) DecodeBody(body interface{}) error {
+func (request Request) DecodeBody(body interface{}) error {
 	err := json.NewDecoder(request.request.Body).Decode(&body)
 
 	return err
