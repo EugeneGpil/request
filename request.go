@@ -20,3 +20,14 @@ func (request Request) DecodeBody(body interface{}) error {
 
 	return err
 }
+
+func (request Request) GetSimpleQueryParams() map[string]string {
+	values := request.request.URL.Query()
+
+	res := make(map[string]string)
+	for key := range values {
+		res[key] = values.Get(key)
+	}
+
+	return res
+}
